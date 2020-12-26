@@ -16,7 +16,7 @@ boolean welcome = true;
 void draw() {
   
   //Welcome Message
-  if (welcome == true) {
+  if (welcome) {
     noStroke();
     fill(255,239,206);
     rect(20,20,width-40,height-70);
@@ -79,24 +79,18 @@ void draw() {
   //End
   
   //Drawing Line
-  if (welcome == false) {
+  if (!welcome) {
     if (mousePressed) {
       if (mouseButton == LEFT) {
       strokeWeight(lineWeight);
       line(mouseX,mouseY,pmouseX,pmouseY);
   }}}
   //End
-  
-  //Keep Line Weight ≥ 1
-  if (lineWeight < 1) {
-    lineWeight=1;
-  }
-  //End
 }
 
 void mouseReleased() {
   //Close Welcome Message
-  if (welcome == true) {
+  if (welcome) {
     if (mouseButton == LEFT) {
       welcome = false;
       background(245);
@@ -111,14 +105,14 @@ void keyPressed() {
   }
   if (colorChange == "All") {
     if (keyCode == UP) {
-      colorR = colorR + colorSpeed;
-      colorB = colorB + colorSpeed;
-      colorG = colorG + colorSpeed;
+      colorR += colorSpeed;
+      colorB += colorSpeed;
+      colorG += colorSpeed;
     }
     if (keyCode == DOWN) {
-      colorR = colorR - colorSpeed;
-      colorG = colorG - colorSpeed;
-      colorB = colorB - colorSpeed;
+      colorR -= colorSpeed;
+      colorG -= colorSpeed;
+      colorB -= colorSpeed;
   }}
   //End
   
@@ -128,10 +122,10 @@ void keyPressed() {
   }
   if (colorChange == "Red") {
     if (keyCode == UP) {
-      colorR = colorR + colorSpeed;
+      colorR += colorSpeed;
     }
     if (keyCode == DOWN) {
-      colorR = colorR - colorSpeed;
+      colorR -= colorSpeed;
   }}
   //End
   
@@ -141,10 +135,10 @@ void keyPressed() {
   }
   if (colorChange == "Green") {
     if (keyCode == UP) {
-      colorG = colorG + colorSpeed;
+      colorG += colorSpeed;
     }
     if (keyCode == DOWN) {
-      colorG = colorG - colorSpeed;
+      colorG -= colorSpeed;
   }}
   //End
   
@@ -154,10 +148,10 @@ void keyPressed() {
   }
   if (colorChange == "Blue") {
     if (keyCode == UP) {
-      colorB = colorB + colorSpeed;
+      colorB += colorSpeed;
     }
     if (keyCode == DOWN) {
-      colorB = colorB - colorSpeed;
+      colorB -= colorSpeed;
   }}
   //End
   
@@ -168,21 +162,23 @@ void keyPressed() {
   //End
   
   //Left-Right Arrow Keys to Change Line Weight{
-  if (keyCode == RIGHT) {
-    lineWeight = lineWeight + 1;
-  }
-  if (keyCode == LEFT) {
-    lineWeight = lineWeight - 1;
-  }
+  if (lineWeight >= 1) {
+    if (keyCode == RIGHT) {
+      lineWeight += 1;
+    }
+    if (keyCode == LEFT) {
+      lineWeight -= 1;
+  }}
   //End
 }
 
 //Scroll Wheel to Change Line Weight
 void mouseWheel(MouseEvent event) {
-  if (event.getCount() == 1.0) {
-    lineWeight = lineWeight - 5;
-  }  
+  if (lineWeight >= 2) {
+    if (event.getCount() == 1.0) {
+      lineWeight -= 2;
+  }} 
   if (event.getCount() == -1.0) {
-    lineWeight = lineWeight + 5;
+    lineWeight += 2;
   }}
 //End
