@@ -4,7 +4,9 @@ My first Processing program.
 A simple paint program made in Processing.
 
 You can adjust the brush color using the RGB adjustment controls:
+  
   • A/R/G/B  =  Select all/red/green/blue color to adjust.
+  
   • ↑/↓  =  Change value of selected color.
 
 The scroll wheel or left/right arrow keys can be used to adjust brush size.
