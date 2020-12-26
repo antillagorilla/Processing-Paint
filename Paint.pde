@@ -163,12 +163,12 @@ void keyPressed() {
   
   //Left-Right Arrow Keys to Change Line Weight{
   if (lineWeight >= 1) {
-    if (keyCode == RIGHT) {
-      lineWeight += 1;
-    }
     if (keyCode == LEFT) {
       lineWeight -= 1;
   }}
+    if (keyCode == RIGHT) {
+      lineWeight += 1;
+  }
   //End
 }
 
