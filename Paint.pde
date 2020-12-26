@@ -14,6 +14,8 @@ String colorChange = "All";
 boolean welcome = true;
 
 void draw() {
+  
+  //Welcome Message
   if (welcome == true) {
     noStroke();
     fill(255,239,206);
@@ -25,7 +27,7 @@ void draw() {
     text("Controls:\nA/R/G/B  =  Select All/Red/Green/Blue Colors\n↑/↓  =  Increase/Decrease Selected Color Value\nScroll Wheel ↑/↓  =  Increase/Decrease Brush Thickness\nSpacebar  =  Set Background to Current Draw Color",40,110);
     text("Click anywhere to start.",40,300);
   }
-  
+  //End
   
   //Keep Red Value Between Parameters
   if (colorR < 0) {
@@ -93,12 +95,13 @@ void draw() {
 }
 
 void mouseReleased() {
+  //Close Welcome Message
   if (welcome == true) {
     if (mouseButton == LEFT) {
       welcome = false;
       background(245);
-      
   }}
+  //End
 }
 
 void keyPressed() {
